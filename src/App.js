@@ -20,7 +20,16 @@ function App() {
 
         <Switch>
           <Route path="/contacts/:userId">
-            <Contact contacts={contacts} />
+            <Contact
+              contacts={contacts}
+              onEdit={(index, editedContact) => {
+                setContacts(
+                  contacts.map((contact, i) => {
+                    return i === index ? editedContact : contact;
+                  })
+                );
+              }}
+            />
           </Route>
           <Route path="/contacts">
             <Contacts
